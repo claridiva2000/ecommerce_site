@@ -1,23 +1,24 @@
-import React from 'react';
-import Navbar from './components/Navbar'
-import Cart from './components/Cart'
-import ProductList from './components/ProductList'
-import Product from './components/Product'
-import NotFound from './components/NotFound'
-import Details from './components/Details'
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-import './App.css';
+import ProductList from "./components/ProductList";
+import Cart from './components/Cart'
+import NotFound from "./components/NotFound";
+import Details from "./components/Details";
+
+import "./App.css";
 
 function App() {
   return (
-    <React.Fragment className="App">
-      <Navbar/>
-      <Product/>
-      <ProductList/>
-      <Cart/>
-      <Details/>
-      <NotFound/>
-      
+    <React.Fragment>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={ProductList} />
+        <Route path="/details" component={Details} />
+        <Route path="/cart" component={Cart} />
+        <Route component={NotFound} />
+      </Switch>
     </React.Fragment>
   );
 }
