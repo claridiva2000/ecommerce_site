@@ -15,9 +15,7 @@ export default class Product extends Component {
             {value => (
               <div
                 className="img-container p-5"
-                onClick={() =>
-                  value.handleDetail(id)
-                }
+                onClick={() => {value.handleDetail(id);value.openModal(id)}}
               >
                 <Link to="/details">
                   <img src={img} alt="product img" className="card-img-top" />
@@ -25,7 +23,10 @@ export default class Product extends Component {
                 <button
                   className="cart-btn"
                   disabled={inCart ? true : false}
-                  onClick={() => value.addToCart(id)}
+                  onClick={() => {
+                    value.addToCart(id);
+                    value.openModal(id);
+                  }}
                 >
                   {inCart ? (
                     <p>In Cart</p>
